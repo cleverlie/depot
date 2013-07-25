@@ -7,5 +7,6 @@ class StoreController < ApplicationController
       session[:counter] = 1
     end
     @accessed_times = session[:counter]
+    @cart = current_cart
   end
 end
