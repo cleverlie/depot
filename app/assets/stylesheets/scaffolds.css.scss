@@ -41,25 +41,42 @@ div {
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
-  display: table;
+  //background-color: red;
+  //display: table;
+  input, textarea, select {
+    -webkit-box-shadow:  0px 0px 6px 1px #FF0000;
+    box-shadow:  0px 0px 6px 1px #FF0000;
+  }
+  label {
+    color: #f00;
+  }
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  
+
+  border:outset 3px #ee0000;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
   h2 {
+    border-top-left-radius:12px;
+    border-top-right-radius:12px;
+    background: #f85032;
+    background: linear-gradient(to bottom,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);
+
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
     color: #fff;
   }
   ul li {

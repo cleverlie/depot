@@ -10,12 +10,27 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def current_cart
+    Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    cart = Cart.create
+    session[:cart_id] = cart.id
+    cart
+  end
+
+  def login_as(user)
+    session[:user_id] = users(user).id
+  end
+
+  def logout
+    session.delete :user_id
+  end
+
+  def setup
+    login_as :one if defined? session
+  end
+
 end
 
-def current_cart
-  Cart.find(session[:cart_id])
-rescue ActiveRecord::RecordNotFound
-  cart = Cart.create
-  session[:cart_id] = cart.id
-  cart
-end
+

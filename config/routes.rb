@@ -1,4 +1,16 @@
 Depot::Application.routes.draw do
+  get 'admin' => 'admin#index'
+  
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  resources :users
+
+  resources :orders
+
   resources :line_items do
     put 'decrement', on: :member
     put 'increase', on: :member
@@ -7,7 +19,9 @@ Depot::Application.routes.draw do
 
   get "store/index"
 
-  resources :products
+  resources :products do
+    get :who_bought, on: :member
+  end
   
   root to: 'store#index', as: 'store'
 
