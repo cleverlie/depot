@@ -59,6 +59,9 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   
   
   test "should fail on access of sensitive data" do
+    cart = Cart.new
+    cart.id = 12345
+    cart.save
     # login user
     user = users(:one)
     get "/login" 
@@ -87,7 +90,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
   test "should logout and not be allowed back in" do
     delete "/logout" 
-    assert_redirected_to store_url
+    assert_redirected_to store_path
 
     get "/users" 
     assert_redirected_to login_url

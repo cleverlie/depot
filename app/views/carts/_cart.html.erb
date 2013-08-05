@@ -1,4 +1,4 @@
-<div class="cart_title">Your Cart</div>
+<div class="cart_title"><%= t('.title') %></div>
 <table>
   <%= render(cart.line_items) %>
   <% cart.line_items.each do |item| %>
@@ -7,10 +7,10 @@
 
   <tr class="total_line">
     <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+    <td class="total_cell"><%= number_to_locale_currency(cart.total_price) %></td>
   </tr>
 </table>
 
-<%= button_to "Checkout", new_order_path, method: :get unless @hide_checkout_button %>
-<%= button_to 'Empty Cart', cart, method: :delete,
-      confirm: 'Are you fucking sure?', remote: true %>
+<%= button_to t('.checkout'), new_order_path, method: :get unless @hide_checkout_button %>
+<%= button_to t('.empty'), cart, method: :delete,
+      confirm: t('.fuckinsure'), remote: true %>

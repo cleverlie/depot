@@ -6,6 +6,11 @@ module ApplicationHelper
     end
     content_tag("div", attributes, &block)
   end
+  
+  def number_to_locale_currency(number)
+    number *= 1.3 if :es == I18n.locale
+    number_to_currency number
+  end
 
 
 
